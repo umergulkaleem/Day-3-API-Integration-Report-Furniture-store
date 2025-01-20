@@ -1,0 +1,6 @@
+Test Case ID,Test Case Description,Test Steps,Expected Result,Actual Result,Status,Severity Level,Assigned To,Remarks
+TC001,Validate product listing page,Open product page > Verify products,Products displayed correctly,Products displayed correctly,Passed,Low,-,No issues found
+TC002,Ensure responsiveness on mobile,Resize browser window > Check layout,Layout adjusts properly to screen size,Responsive layout working as intended,Passed,Medium,-,Test successful
+TC003,Dyanmic route,Create Route >Static>dynamic,Route with Respect to the product ,Query Corrected ,Passed,High,-,error 404
+TC004,carting duplicate key error,added on product twice,showed twice,gave error in cypress for key duplication,Passed,High,-,key error
+TC005,query type change,change the query in product listing page,no product found matching your result,no product found matching your result,Passed,High,,gave error message
