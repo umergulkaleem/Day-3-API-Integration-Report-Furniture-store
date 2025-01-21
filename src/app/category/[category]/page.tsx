@@ -34,7 +34,7 @@ export default async function CategoryPage({
 }: {
   params: { category: string };
 }) {
-  const category = params.category;
+  const category = params.category; // Correctly destructuring params without await
 
   let products: Product[] = [];
 
@@ -55,7 +55,6 @@ export default async function CategoryPage({
         {category} Products
       </h1>
 
-      {/* Display products for this category */}
       <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
           <li
@@ -73,7 +72,6 @@ export default async function CategoryPage({
                 />
               </div>
 
-              {/* Text and Description */}
               <div className="flex flex-col">
                 <h2 className="text-xl font-semibold text-gray-900 truncate">
                   {product.name}
