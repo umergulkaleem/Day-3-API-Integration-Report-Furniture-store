@@ -16,7 +16,7 @@ const Navbar = () => {
 
       {/* Right Section - Icons */}
       <div className="flex items-center justify-end w-full mt-4 lg:mt-0 lg:w-[450px] space-x-6">
-        <Link href="/myaccount">
+        <Link href="/">
           <Image
             src="/mdi_account-alert-outline@2x.svg"
             width={28}
@@ -32,7 +32,7 @@ const Navbar = () => {
           alt="Search"
           className="text-black hover:scale-110 transition-transform duration-200"
         />
-        <Link href="/checkout">
+        <Link href="/">
           <Image
             src="/akar-icons_heart.svg"
             width={28}
@@ -41,7 +41,7 @@ const Navbar = () => {
             className="text-black hover:scale-110 transition-transform duration-200"
           />
         </Link>
-        <Link href="/cart">
+        <Link href="/">
           <Image
             src="/ant-design_shopping-cart-outlined.svg"
             width={28}
