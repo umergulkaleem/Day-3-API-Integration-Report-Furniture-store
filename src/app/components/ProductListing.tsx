@@ -88,6 +88,12 @@ export default function ProductListing() {
         .filter((item) => item.quantity > 0)
     );
   };
+  console.log("Sanity Project ID:", process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
+  console.log("Sanity Dataset:", process.env.NEXT_PUBLIC_SANITY_DATASET);
+  console.log(
+    "Sanity Token:",
+    process.env.SANITY_API_TOKEN ? "Token is available" : "No token found"
+  );
 
   return (
     <div className="max-w-screen-xl mx-auto p-4">
