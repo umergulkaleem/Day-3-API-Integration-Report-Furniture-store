@@ -30,11 +30,11 @@ async function getProductsByCategory(category: string) {
 }
 
 interface CategoryPageProps {
-  params: { category: string }; // Explicitly defining params
+  params: Promise<{ category: string }>;
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const { category } = params;
+  const { category } = await params;
 
   let products: Product[] = [];
 
