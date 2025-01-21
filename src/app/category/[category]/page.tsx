@@ -29,12 +29,12 @@ async function getProductsByCategory(category: string) {
   return products;
 }
 
-export default async function CategoryPage({
-  params,
-}: {
-  params: { category: string };
-}) {
-  const category = params.category; // Correctly destructuring params without await
+interface CategoryPageProps {
+  params: { category: string }; // Explicitly defining params
+}
+
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const { category } = params;
 
   let products: Product[] = [];
 
@@ -54,7 +54,6 @@ export default async function CategoryPage({
       <h1 className="text-4xl font-semibold text-center mb-6">
         {category} Products
       </h1>
-
       <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
           <li
@@ -71,7 +70,6 @@ export default async function CategoryPage({
                   className="w-full h-full object-contain rounded-lg"
                 />
               </div>
-
               <div className="flex flex-col">
                 <h2 className="text-xl font-semibold text-gray-900 truncate">
                   {product.name}
@@ -80,7 +78,6 @@ export default async function CategoryPage({
                   {product.description}
                 </p>
               </div>
-
               <div className="flex justify-between items-center mt-4">
                 <p className="text-lg font-semibold text-gray-800">
                   ${product.price}
