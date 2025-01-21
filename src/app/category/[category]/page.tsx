@@ -34,7 +34,7 @@ export default async function CategoryPage({
 }: {
   params: { category: string };
 }) {
-  const { category } = params;
+  const category = params.category;
 
   let products: Product[] = [];
 
