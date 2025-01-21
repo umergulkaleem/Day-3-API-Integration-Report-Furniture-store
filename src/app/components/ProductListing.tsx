@@ -26,7 +26,7 @@ const client = createClient({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   useCdn: false,
   apiVersion: "2021-08-31",
-  token: process.env.SANITY_API_TOKEN!,
+  token: process.env.SANITY_API_TOKEN,
 });
 
 async function getProducts() {
@@ -94,6 +94,18 @@ export default function ProductListing() {
     "Sanity Token:",
     process.env.SANITY_API_TOKEN ? "Token is available" : "No token found"
   );
+  React.useEffect(() => {
+    console.log("useEffect is running");
+    async function fetchProducts() {
+      try {
+        const fetchedProducts = await getProducts();
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    }
+    fetchProducts();
+  }, []);
 
   return (
     <div className="max-w-screen-xl mx-auto p-4">
