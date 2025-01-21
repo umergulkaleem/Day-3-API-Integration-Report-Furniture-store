@@ -22,8 +22,12 @@ const client = createClient({
   token: process.env.SANITY_API_TOKEN,
 });
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const { id } = await params;
+interface PageProps {
+  params: Promise<{ id: string }>; // Treat params as a Promise
+}
+
+export default async function Page({ params }: PageProps) {
+  const { id } = await params; // Await params
 
   const query = `*[_type == 'productnew' && id == $id][0]`;
   const product: Product | null = await client.fetch(query, { id });
