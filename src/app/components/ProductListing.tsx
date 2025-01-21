@@ -26,7 +26,7 @@ const client = createClient({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   useCdn: false,
   apiVersion: "2021-08-31",
-  token: process.env.SANITY_API_TOKEN,
+  token: process.env.SANITY_API_TOKEN!,
 });
 
 async function getProducts() {
