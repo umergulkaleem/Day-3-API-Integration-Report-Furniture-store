@@ -1,3 +1,16 @@
+Furniture Store - E-Commerce Project
+This project is a general e-commerce store named Furniture Store built with Next.js and Sanity. The main features of the project include:
+
+Data Import & Display: Imported product data into Sanity and displayed it on the homepage.
+Dynamic Routing: Created two dynamic routes for product categories and individual product pages.
+Cart Functionality: Implemented a cart feature on the main page for easy shopping.
+Search Feature: Added a search functionality to allow users to find products easily.
+The project aims to provide a seamless shopping experience with an intuitive UI and efficient navigation.
+
+For more details and progress updates, please refer to the documentation folder.
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
