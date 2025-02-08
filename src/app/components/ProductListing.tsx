@@ -17,10 +17,10 @@ type Product = {
   category: string;
 };
 
-type CartItem = {
-  product: Product;
-  quantity: number;
-};
+// type CartItem = {
+//   product: Product;
+//   quantity: number;
+// };
 
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
@@ -40,7 +40,6 @@ export default function ProductListing() {
   const { cart, addToCart, removeFromCart, updateQuantity } = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const [products, setProducts] = useState<Product[]>([]);
-  // const [cart, setCart] = useState<CartItem[]>([]);
 
   React.useEffect(() => {
     async function fetchProducts() {
@@ -55,41 +54,6 @@ export default function ProductListing() {
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  // const addToCart = (product: Product) => {
-  //   setCart((prevCart) => {
-  //     const existingItem = prevCart.find(
-  //       (item) => item.product.id === product.id
-  //     );
-  //     if (existingItem) {
-  //       return prevCart.map((item) =>
-  //         item.product.id === product.id
-  //           ? { ...item, quantity: item.quantity + 1 }
-  //           : item
-  //       );
-  //     } else {
-  //       return [...prevCart, { product, quantity: 1 }];
-  //     }
-  //   });
-  // };
-
-  // const removeFromCart = (productId: string) => {
-  //   setCart((prevCart) =>
-  //     prevCart.filter((item) => item.product.id !== productId)
-  //   );
-  // };
-
-  // const updateQuantity = (productId: string, change: number) => {
-  //   setCart((prevCart) =>
-  //     prevCart
-  //       .map((item) =>
-  //         item.product.id === productId
-  //           ? { ...item, quantity: Math.max(1, item.quantity + change) }
-  //           : item
-  //       )
-  //       .filter((item) => item.quantity > 0)
-  //   );
-  // };
 
   return (
     <div className="max-w-screen-xl mx-auto p-4">
