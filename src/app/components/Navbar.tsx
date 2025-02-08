@@ -41,7 +41,7 @@ const Navbar = () => {
             className="text-black hover:scale-110 transition-transform duration-200"
           />
         </Link>
-        <Link href="/">
+        <Link href="/checkout">
           <Image
             src="/ant-design_shopping-cart-outlined.svg"
             width={28}

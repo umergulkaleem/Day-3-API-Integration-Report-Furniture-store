@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { createClient } from "@sanity/client";
 import Link from "next/link";
 import Image from "next/image";
+import { useCart } from "../context/CartContext";
 
 type Product = {
   id: string;
@@ -36,9 +37,10 @@ async function getProducts() {
 }
 
 export default function ProductListing() {
+  const { cart, addToCart, removeFromCart, updateQuantity } = useCart();
   const [searchQuery, setSearchQuery] = useState("");
   const [products, setProducts] = useState<Product[]>([]);
-  const [cart, setCart] = useState<CartItem[]>([]);
+  // const [cart, setCart] = useState<CartItem[]>([]);
 
   React.useEffect(() => {
     async function fetchProducts() {
@@ -54,40 +56,40 @@ export default function ProductListing() {
       product.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const addToCart = (product: Product) => {
-    setCart((prevCart) => {
-      const existingItem = prevCart.find(
-        (item) => item.product.id === product.id
-      );
-      if (existingItem) {
-        return prevCart.map((item) =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        );
-      } else {
-        return [...prevCart, { product, quantity: 1 }];
-      }
-    });
-  };
+  // const addToCart = (product: Product) => {
+  //   setCart((prevCart) => {
+  //     const existingItem = prevCart.find(
+  //       (item) => item.product.id === product.id
+  //     );
+  //     if (existingItem) {
+  //       return prevCart.map((item) =>
+  //         item.product.id === product.id
+  //           ? { ...item, quantity: item.quantity + 1 }
+  //           : item
+  //       );
+  //     } else {
+  //       return [...prevCart, { product, quantity: 1 }];
+  //     }
+  //   });
+  // };
 
-  const removeFromCart = (productId: string) => {
-    setCart((prevCart) =>
-      prevCart.filter((item) => item.product.id !== productId)
-    );
-  };
+  // const removeFromCart = (productId: string) => {
+  //   setCart((prevCart) =>
+  //     prevCart.filter((item) => item.product.id !== productId)
+  //   );
+  // };
 
-  const updateQuantity = (productId: string, change: number) => {
-    setCart((prevCart) =>
-      prevCart
-        .map((item) =>
-          item.product.id === productId
-            ? { ...item, quantity: Math.max(1, item.quantity + change) }
-            : item
-        )
-        .filter((item) => item.quantity > 0)
-    );
-  };
+  // const updateQuantity = (productId: string, change: number) => {
+  //   setCart((prevCart) =>
+  //     prevCart
+  //       .map((item) =>
+  //         item.product.id === productId
+  //           ? { ...item, quantity: Math.max(1, item.quantity + change) }
+  //           : item
+  //       )
+  //       .filter((item) => item.quantity > 0)
+  //   );
+  // };
 
   return (
     <div className="max-w-screen-xl mx-auto p-4">
@@ -163,6 +165,11 @@ export default function ProductListing() {
                       Remove
                     </button>
                   </div>
+                  <Link href="/checkout">
+                    <button className="mt-4 w-full py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                      Proceed to Checkout
+                    </button>
+                  </Link>
                 </li>
               ))}
             </ul>

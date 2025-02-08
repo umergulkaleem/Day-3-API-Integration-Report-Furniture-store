@@ -1,5 +1,5 @@
 import { createClient } from "@sanity/client";
-import { notFound } from "next/navigation"; // For 404 handling in the app directory
+import { notFound } from "next/navigation";
 import Image from "next/image";
 
 type Product = {
@@ -23,17 +23,17 @@ const client = createClient({
 });
 
 interface PageProps {
-  params: Promise<{ id: string }>; // Treat params as a Promise
+  params: Promise<{ id: string }>;
 }
 
 export default async function Page({ params }: PageProps) {
-  const { id } = await params; // Await params
+  const { id } = await params;
 
   const query = `*[_type == 'productnew' && id == $id][0]`;
   const product: Product | null = await client.fetch(query, { id });
 
   if (!product) {
-    return notFound(); // Return a 404 page if the product is not found
+    return notFound();
   }
 
   return (
